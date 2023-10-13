@@ -68,10 +68,8 @@ def client_handler(connection):
         except Exception as e:
             print(f"Client {camera_name} disconnected - exception {e}")
             cv2.destroyWindow(camera_name)
-            cv2.waitKey(1)
-            cv2.waitKey(1)
-            cv2.waitKey(1)
-            cv2.waitKey(1)
+            for i in range(4):
+                cv2.waitKey(1)
             break
 
     print("before connection close")
@@ -81,8 +79,8 @@ def client_handler(connection):
 def accept_connections(ServerSocket):
    Client, address = ServerSocket.accept()
    print('Connected to: ' + address[0] + ':' + str(address[1]))
-   #start_new_thread(client_handler, (Client,))
-   client_handler(Client)
+   start_new_thread(client_handler, (Client,))
+   #client_handler(Client)
 
 
 def start_server(host, port):
