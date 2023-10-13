@@ -12,8 +12,11 @@ import time
 # Disable SSL certificate verification
 ssl._create_default_https_context = ssl._create_unverified_context
 
-# Load the YOLOv5 model
-path = '/Users/soumojit/PycharmProjects/FaceRecognition/best.pt'  # Change the path accordingly
+parser = argparse.ArgumentParser(description="Your Description Here")
+parser.add_argument("--path", required=True, help="Path to the YOLOv5 model")
+args = parser.parse_args()
+path = args.path
+
 model = torch.hub.load('ultralytics/yolov5', 'custom', path, force_reload=True)
 
 host = '0.0.0.0'
@@ -65,17 +68,21 @@ def client_handler(connection):
         except Exception as e:
             print(f"Client {camera_name} disconnected - exception {e}")
             cv2.destroyWindow(camera_name)
+            cv2.waitKey(1)
+            cv2.waitKey(1)
+            cv2.waitKey(1)
+            cv2.waitKey(1)
             break
 
-    connection.close()
+    print("before connection close")
+    return 0
 
 
 def accept_connections(ServerSocket):
-    while True:
-        Client, address = ServerSocket.accept()
-        print('Connected to: ' + address[0] + ':' + str(address[1]))
-        #start_new_thread(client_handler, (Client,))
-        client_handler(Client)
+   Client, address = ServerSocket.accept()
+   print('Connected to: ' + address[0] + ':' + str(address[1]))
+   #start_new_thread(client_handler, (Client,))
+   client_handler(Client)
 
 
 def start_server(host, port):
