@@ -1,17 +1,19 @@
 # ML-Model-Tester
 
-This project implements socket programming to establish a connection between a Sever and its Clients, where, the clients send a video stream to the Server and the Server gets a ML model from a given path, and runs it on incoming video stream, displaying the inference frames on a imshow window with bounding boxes.
-This Repository consists of a few pre trained model files in ".pt" format, that were trained using the [ModelTrainer](https://github.com/kayaljeet/ML-Model-Maker.git) project application.
+This project implements socket programming to establish a connection between a server and its clients. The clients send a video stream to the server, which retrieves a machine learning model from a specified path. The server then runs the model on the incoming video stream, displaying the inference frames in an imshow window with bounding boxes.
 
-## Contents:
+This repository includes several pre-trained model files in ".pt" format, which were trained using the [ModelTrainer](https://github.com/kayaljeet/ML-Model-Maker.git) application.
 
-### 1) Client
-	`a) client.py:`
-		Socket program to send a video stream to a Server program
-	`b) config.txt`
-	`c) helmet.mp4:`
-		sample video to test "helmet.pt" model
-### 2) Server 
-	`a) server.py:`
-		Socket program to receive video streams from Clients and implement object recognition, using a PyTorch file of a pre-trained model
+## Contents
 
+### 1. Client
+- **a) `client.py`:**  
+  Socket program to send a video stream to a server program.
+- **b) `config.txt`:**  
+  Configuration file for the client.
+- **c) `helmet.mp4`:**  
+  Sample video to test the "helmet.pt" model.
+
+### 2. Server
+- **a) `server.py`:**  
+  Socket program to receive video streams from clients and implement object recognition using a PyTorch file of a pre-trained model.
